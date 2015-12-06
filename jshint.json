@@ -1,0 +1,20 @@
+{
+    "browserify": true,
+    "jasmine": true,
+
+    "curly": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "futurehostile": true,
+    "maxdepth": 4,
+    "maxparams": 5,
+    "noarg": true,
+    "nocomma": true,
+    "nonbsp": true,
+    "nonew": true,
+    "undef": true,
+    "unused": "vars",
+
+    "globals": {"inject":false}
+}

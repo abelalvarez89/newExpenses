@@ -1,0 +1,14 @@
+{
+    "excludeFiles": ["*min.js"],
+    "verbose": true,
+    "preset": "crockford",
+    "safeContextKeyword": [ "self", "vm" ],
+    "validateQuoteMarks": true,
+    "requireSpaceAfterLineComment": true,
+    "requireSemicolons": true,
+    "requireBlocksOnNewline": 2,
+    "disallowDanglingUnderscores": {
+        "allExcept": [ "_$controller_", "_$httpBackend_", "_$rootScope_",
+                       "_$http_", "_$templateCache_", "_$window_" ]
+    }
+}

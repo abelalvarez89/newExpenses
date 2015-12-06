@@ -1,0 +1,30 @@
+<div>
+    <form novalidate name="form" class="col-xs-10 col-xs-offset-1">
+        <h1>Manage Expenses</h1>
+        <div class="form-group">
+            <label for="">Find Store</label>
+            <input type="text" ng-model="vm.store" uib-typeahead="store for store in vm.storeList | filter:$viewValue | limitTo:8" class="form-control" required name="selectedStore">
+            <div ng-show="form.selectedStore.$touched && form.selectedStore.$invalid">
+                <div class="alert alert-danger" role="alert">Please select a valid store</div>
+            </div>
+        </div>
+        <label for="">Purchase Date</label>
+        <div class="input-group">
+            <input type="text" class="form-control" name="date" uib-datepicker-popup="{{format}}" ng-model="vm.date" is-open="vm.openDate" required>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="vm.openDate = !vm.openDate"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div ng-show="form.date.$touched && form.date.$invalid">
+            <div class="alert alert-danger" role="alert">Please select a valid date</div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="">Amount Spent</label>
+            <input ng-model="vm.spent" type="number" name="spent" class="form-control" required>
+            <div ng-show="form.spent.$touched && form.spent.$invalid">
+                <div class="alert alert-danger" role="alert">Please enter amout spent</div>
+            </div>
+        </div>
+    </form>
+</div>

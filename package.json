@@ -1,0 +1,80 @@
+{
+  "name": "manage-expenses",
+  "version": "0.0.0",
+  "description": "simple app to manage your expenses",
+  "main": "src/index.js",
+  "config": {
+    "port": 3000,
+    "build_dir": "build",
+    "bundle": "bundle.min.js"
+  },
+  "scripts": {
+    "init": "npm install",
+    "test": "karma start karma.conf.js",
+    "build": "browserify -g uglifyify -e %NPM_PACKAGE_MAIN% -d | exorcist %NPM_PACKAGE_CONFIG_BUILD_DIR%/%NPM_PACKAGE_CONFIG_BUNDLE%.map > %NPM_PACKAGE_CONFIG_BUILD_DIR%/%NPM_PACKAGE_CONFIG_BUNDLE%",
+    "watch": "watchify %NPM_PACKAGE_MAIN% -d -o src/%NPM_PACKAGE_CONFIG_BUNDLE% -v",
+    "serve": "live-server --port=%NPM_PACKAGE_CONFIG_PORT% src",
+    "style": "jscs src --verbose --config jscs.json --no-colors",
+    "style:fix": "npm run style -- --fix",
+    "lint": "jshint --config jshint.json src/",
+    "prestart": "npm run init",
+    "start": "parallelshell \"npm run watch -s\" \"npm run serve -s\" \"npm run test\""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "angular-mocks": "^1.4.5",
+    "browserify": "^10.2.4",
+    "browserify-css": "^0.6.1",
+    "browserify-istanbul": "^0.2.1",
+    "browserify-ngannotate": "^1.0.1",
+    "exorcist": "^0.4.0",
+    "jasmine": "^2.3.1",
+    "jasmine-core": "^2.3.4",
+    "jscs": "^1.13.1",
+    "jshint": "^2.8.0",
+    "karma": "^0.12.37",
+    "karma-browserify": "^4.2.1",
+    "karma-cli": "^0.1.0",
+    "karma-coverage": "^0.4.2",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "live-server": "^0.8.1",
+    "parallelshell": "^1.2.0",
+    "phantomjs": "^1.9.17",
+    "sassify": "^0.9.1",
+    "stringify": "^3.1.0",
+    "uglifyify": "^3.0.1",
+    "watch": "^0.16.0",
+    "watchify": "^3.3.1"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-ngannotate",
+      [
+        "sassify",
+        {
+          "auto-inject": true
+        }
+      ],
+      "browserify-css",
+      "stringify",
+      [
+        "uglifyify",
+        {
+          "ignore": "**/*.spec.js"
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "angular": "^1.4.5",
+    "angular-smart-table": "^2.1.5",
+    "angular-ui-bootstrap": "^0.14.3",
+    "firebase": "^2.3.2"
+  }
+}
