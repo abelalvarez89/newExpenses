@@ -1,0 +1,19 @@
+<div>
+    <h1>{{vm.header}}</h1>
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username" ng-model="vm.username">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="vm.password">
+        </div>
+        <div ng-if="!vm.register" class="checkbox">
+            <label>
+                <input ng-model="vm.rememberMe" type="checkbox"> Keep me signed in
+            </label>
+        </div>
+        <button type="submit" ng-click="vm.submit(vm.username, vm.password, vm.rememberMe)"class="btn btn-default">{{vm.header}}</button>
+    </form>
+</div>

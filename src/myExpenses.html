@@ -1,4 +1,29 @@
-<div id="myExpenses">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">Expenses</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><button class="btn btn-default" ng-click="vm.login()">Login</button></li>
+                <li><button class="btn btn-default" ng-click="vm.register()">Register</button></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div ng-if="vm.loginOrRegister">
+    <div register="false" login-or-register></div>
+</div>
+<div ng-if="!vm.loginOrRegister">
+    <div register="true" login-or-register></div>
+</div>
+<div ng-if="false" id="myExpenses">
     <div store="vm.store" date="vm.date" spent="vm.spent" expenses-header></div>
     <div class="col-xs-10 col-xs-offset-1">
         <button type="submit" class="btn btn-default" ng-disabled="!vm.store || !vm.date || !vm.spent" ng-click="vm.savePurchase(vm.store, vm.date, vm.spent)">Save Transaction</button>
@@ -27,7 +52,7 @@
                     <td>
                         <button type="button" ng-click="vm.removeItem(row)" class="btn btn-sm btn-danger">
                             <i class="glyphicon glyphicon-remove-circle">
-					</i>
+                    </i>
                         </button>
                     </td>
                 </tr>

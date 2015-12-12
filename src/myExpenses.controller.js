@@ -3,18 +3,24 @@ module.exports = function($q, expensesService, FIREBASE) {
 	var vm = this;
 	vm.savePurchase = savePurchase;
 	vm.removeItem = removeItem;
+	vm.login = login;
+	vm.register = register;
+	
+
+	vm.loginOrRegister = true;
+
 	var orignalExpensesList = [];
 	var ref = new Firebase(FIREBASE.serviceUrl);
 
 	getExpenses();
 
-	function authenticate() {
-		ref.authAnonymously(function(error, authData) {
-			if (error) {
-				console.log("Login Failed!", error);
-			}
-		});
-	};
+	function login() {
+		vm.loginOrRegister = true;
+	}
+
+	function register() {
+		vm.loginOrRegister = false;
+	}
 
 	function removeItem(row) {
 
@@ -34,7 +40,7 @@ module.exports = function($q, expensesService, FIREBASE) {
 	}
 
 	function savePurchase(store, date, spent) {
-		var postsRef = ref.child("expenses");
+		var postsRef = ref.child('abel').child("expenses");
 		var newPostRef = postsRef.push();
 		newPostRef.set({
 			store: store,

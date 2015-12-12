@@ -8,4 +8,5 @@ require('angular-smart-table');
 angular.module('Expenses', ['ui.bootstrap', 'smart-table'])
 	.directive('myExpenses', require('./myExpenses.directive.js'))
 	.directive('expensesHeader', require('./expensesHeader.directive.js'))
+	.directive('loginOrRegister', require('./login.directive.js'))
 	.service('expensesService', require('./expenses.service.js'));
